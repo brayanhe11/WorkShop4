@@ -1,4 +1,4 @@
-public class Velero extends Embarcacion {
+public class Velero extends Embarcacion implements Validacion {
     private int cantidadMastiles;
 
     public Velero(Capitan capitan, double precioBase, int añoFabricacion, double eslora, int cantidadMastiles) {

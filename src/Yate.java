@@ -1,4 +1,4 @@
-public class Yate extends Embarcacion {
+public class Yate extends Embarcacion implements Validacion{
     private int cantidadCamarotes;
 
     public Yate(Capitan capitan, double precioBase, int añoFabricacion, double eslora, int cantidadCamarotes) {

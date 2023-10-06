@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,7 +16,8 @@ public class Main {
             System.out.println("4. Calcular valor del alquiler");
             System.out.println("5. Asignar capitán a una embarcación");
             System.out.println("6. Ver especificaciones y justificación del precio");
-            System.out.println("7. Salir");
+            System.out.println("7. Alquilar embarcaión");
+            System.out.println("8. Salir");
             System.out.print("Seleccione una opción: ");
 
             int opcion = scanner.nextInt();
@@ -77,9 +79,15 @@ public class Main {
                     System.out.println("Capitán agregado con éxito.");
                     break;
                 case 3:
-                    System.out.println("Embarcaciones disponibles:");
-                    for (int i = 0; i < embarcaciones.size(); i++) {
-                        System.out.println(i + 1 + ". " + embarcaciones.get(i).getClass().getSimpleName());
+                    if (embarcaciones.isEmpty()){
+                        System.out.println("No hay embarcaciones disponibles");
+                    }
+                    else {
+                        System.out.println("Embarcaciones disponibles:");
+                        for (int i = 0; i < embarcaciones.size(); i++) {
+                            System.out.println(i + 1 + ". " + embarcaciones.get(i).getClass().getSimpleName());
+                    }
+
                     }
                     break;
                 case 4:
@@ -158,7 +166,25 @@ public class Main {
                         System.out.println("Número de embarcación no válido.");
                     }
                     break;
+
                 case 7:
+                    System.out.println("Ingrese el numero de la embarcación que desea alquilar: ");
+                    int numEmbarcacionAlquilar = scanner.nextInt() -1;
+                    scanner.nextLine();
+
+                    if (numEmbarcacionAlquilar >= 0 && numEmbarcacionAlquilar < embarcaciones.size()) {
+                        Embarcacion embarcacionAlquilar = embarcaciones.get(numEmbarcacionAlquilar);
+                        double montoAlquiler = embarcacionAlquilar.calcularMontoAlquiler();
+                        System.out.println("Monto del alquiler: $" + montoAlquiler);
+                        System.out.println("Embarcación alquilada con éxito.");
+                        embarcaciones.remove(numEmbarcacionAlquilar);
+                    }
+
+                    else {
+                        System.out.println("Número de embarcación no válido");
+                    }
+                    break;
+                case 8:
                     System.out.println("¡Hasta luego!");
                     System.exit(0);
                     break;
